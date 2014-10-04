@@ -1,0 +1,73 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+//@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
+@import url(http://fonts.googleapis.com/css?family=Inconsolata);
+@import 'less/bootstrap.less';
+
+
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  background-color: @fondo;
+
+  .navbar{
+    font-family: 'Inconsolata';
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+
+  .jumbotron{
+ // linear-gradient(to right, rgba(255, 255, 255, 0),  rgba(255, 255, 255, 1))
+ // linear-gradient(45deg, #020031 0%, #6d3353 100%)
+  // linear-gradient(45deg, rgba(96, 44, 78, 0.4), rgba(20, 9, 55,1))
+  // linear-gradient(45deg, rgba(26, 84, 119,0.3), darken(rgba(26, 84, 119,1),20%))
+	background-image: url("o-teclas.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+  //height: auto;
+	color: #EEFCFF;
+	padding-top: 90px;
+	padding-bottom: 250px;
+	background-color: @gray-darker;
+
+
+  	h1{
+
+  	font-family: 'Roboto Slab', sans-serif, serif;
+  	font-size: 6em;
+    text-shadow: 3px 3px 2px @gray-darker;
+  	}
+  	p{
+  		font-family: 'Inconsolata';
+  		font-size: 2em;
+      text-shadow: 3px 3px 2px @gray-darker;
+  	}
+    // a{
+    //   opacity: 0.5;
+    // }
+    // a:hover{
+    //   opacity: 1;
+    // }
+
+  }
+  .contacto{
+  	padding-bottom: 50px;
+  }
+  .input-group{
+    padding-bottom: 25px;
+  }
+  .footer{
+  	font-family: 'Inconsolata';
+  	font-size: 1.2em;
+  	//text-shadow: 3px 2px 2px @gray-light;
+    #gradient>.vertical(#0A4652, darken(#0A4652,50%));
+  	color: #EEFCFF;
+  	//background-color: #0A4652;
+  	padding: 50px 40px;
+    margin-top: 5px;
+  	border-radius: 15px;
+
+  }
+}
+
