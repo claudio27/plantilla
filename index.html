@@ -27,6 +27,27 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+      <style>
+  .boton-top{
+    display: none;
+    position:fixed;
+    bottom:0;
+    right:0;
+    width:50px;
+    height: 50px;
+    text-align:center;
+    line-height:50px;
+    color:#fff;
+    background: #1A5477;
+    cursor:pointer;
+    z-index: 100;
+
+  }
+  #notificacion{
+    display: none;
+  }
+  </style>
+
   </head>
 
   <body>
@@ -76,7 +97,7 @@
       </div>
     </div>
 
-    <div class="container"> <!-- contenedor 1 -->
+    <div class="container" id="sobremi"> <!-- contenedor 1 -->
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
@@ -130,6 +151,9 @@
           </div>
      </div> <!-- fin notificacion -->
 
+<!--      boton ir arriba -->
+<span class="boton-top"><i class="fa fa-hand-o-up"></i></span>
+<!--fin boton ir arriba -->
 
      <!-- formulario contacto -->
 <!-- <div class="container">
@@ -186,10 +210,11 @@
           <div class="input-group"> 
             <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
             <textarea class="form-control" rows="5" name="mensaje" placeholder="Mensaje"></textarea>
-          </div>
-                      
-        <button class="btn btn-default"><i class="fa fa-paper-plane fa-fw"></i>Enviar</button>
-          
+          </div>                      
+          <button type="button" class="btn btn-default" id="btn-form">
+            <i class="fa fa-paper-plane fa-fw"></i>
+            Enviar
+          </button>
       </form>
 
      </div> 
@@ -222,10 +247,59 @@
     <script src="dist/js/bootstrap.min.js"></script>
     <script src="dist/js/jquery.validate.min.js"></script>
     <script>
-
+// jquery.validate
 
  $(function(){
-        $('#elform').validate(
+      
+    });        
+    </script>
+ <!-- page scroll -->
+  <script>
+$(document).ready(function() {
+  // navigation click actions 
+  $('.scroll-link').on('click', function(event){
+    event.preventDefault();
+    var sectionID = $(this).attr("data-id");
+    scrollToID('#' + sectionID, 750);
+  });
+  // scroll to top action
+  $('.scroll-top').on('click', function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop:0}, 'slow');     
+  });
+  // mobile nav toggle
+  $('#nav-toggle').on('click', function (event) {
+    event.preventDefault();
+    $('#main-nav').toggleClass("open");
+  });
+});
+// scroll function
+function scrollToID(id, speed){
+  var offSet = 50;
+  var targetOffset = $(id).offset().top - offSet;
+  var mainNav = $('#main-nav');
+  $('html,body').animate({scrollTop:targetOffset}, speed);
+  if (mainNav.hasClass("open")) {
+    mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+    mainNav.removeClass("open");
+  }
+}
+if (typeof console === "undefined") {
+    console = {
+        log: function() { }
+    };
+}
+</script>
+<script>
+//envio de datos con ajax
+
+$(function(){
+   var notificacion = $("#notificacion"); // para q sea mas rapido
+      //notificacion.hide(); 
+      
+  $("#btn-form").on('click',function(){
+
+  $('#elform').validate(
           {
             rules:{
               mensaje:{
@@ -249,13 +323,53 @@
                   email: "Debe ingresar un email valido"
                 }
               }
-            
-
-
           });
-    });
+    // recupera datos del formulario
+    var email_data = $("#email").val();
+    var mensaje_data = $("#msj").val();
 
-        
-    </script>
+    $.post("welcome/contacto",{email:email_data, mensaje: mensaje_data},
+      function(){
+         notificacion.show(1000);
+         notificacion.fadeOut(3000);
+      });
+    return false;
+  });
+
+
+
+});
+</script>
+<!-- google analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32642730-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script>
+  //boton ir arriba
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > 0) {
+        $('.boton-top').fadeIn();
+    } else {
+        $('.boton-top').fadeOut();
+    }
+});
+
+    $('.boton-top').click(function(){
+    $('body,html').animate({scrollTop : 0}, 500);
+    return false;
+});
+
+</script>
+
   </body>
 </html>
