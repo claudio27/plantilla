@@ -57,7 +57,9 @@
               <ul class="dropdown-menu">
                 <li><a data-toggle="modal" data-target="#modal1">AJAX + JSON</a></li>
                 <li><a data-toggle="modal" data-target="#modal2">MANTENEDOR CRUD</a></li>
-                <li><a data-toggle="modal" data-target="#modal3">REST</a></li>
+                <li><a data-toggle="modal" data-target="#modal3">responsive</a></li>
+                <li><a id="rest">
+                  rest api</a></li>
                 </ul>
             </li> 
 
@@ -166,12 +168,40 @@
 
 </div> <!-- fin formulario de contacto 2 -->
 
+<div id="modal1" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    <iframe src="http://php-claudioapps.rhcloud.com/nuevo" width="100%" height="900px" frameborder="0" scrolling="yes" id="iframe"></iframe>
+    </div>
+  </div>
+</div>
+
+
+<div id="modal2" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    <iframe src="http://php-claudioapps.rhcloud.com/examples" width="100%" height="900px" frameborder="0" scrolling="yes" id="iframe"></iframe>
+    </div>
+  </div>
+</div>
+
+
+<div id="modal3" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    <iframe src="#" width="380px" height="900px" frameborder="0" scrolling="yes" id="iframe"></iframe>
+    </div>
+  </div>
+</div>
+
 
       <div class="container">
         
    <footer class="footer text-center">
         <p>&copy; Claudio Serrano Peña y Lillo 2014 - Santiago - <a href="mailto:claudio.serrano2@gmail.com">Contacto</a> - Realizada con : Bootstrap + CodeIgniter
-        <a href="/welcome/registros">:)</a></p>
+        <a href="/welcome/registros">:)</a>
+        optimizado para navegadores modernos.
+      </p>
    </footer>
     
       </div>
@@ -186,8 +216,10 @@
     <script src="activos/js/bootstrap.min.js"></script>
     <script src="activos/js/jquery.validate.min.js"></script>
     <script>
+$("#rest").click(function(event){
+  alert("Muy pronto con Nodejs :D");
+});
 // jquery.validate
-
  $(function(){
        var notificacion = $("#notificacion"); 
   $('#elform').validate(

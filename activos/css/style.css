@@ -6228,6 +6228,9 @@ body .boton-top {
   cursor: pointer;
   z-index: 100;
 }
+body .dropdown-menu {
+  cursor: pointer;
+}
 #notificacion {
   display: none;
 }
