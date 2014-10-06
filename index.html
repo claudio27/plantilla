@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="activos/img/favicon.ico">
+    <link rel="icon" href="activos/img/favicon.png">
 
     <title>Claudio Serrano - Programación sitios web, Desarrollador Aplicaciones</title>
 
@@ -27,27 +27,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-      <style>
-  .boton-top{
-    display: none;
-    position:fixed;
-    bottom:0;
-    right:0;
-    width:50px;
-    height: 50px;
-    text-align:center;
-    line-height:50px;
-    color:#fff;
-    background: #1A5477;
-    cursor:pointer;
-    z-index: 100;
-
-  }
-  #notificacion{
-    display: none;
-  }
-  </style>
-
   </head>
 
   <body>
@@ -174,10 +153,7 @@
             <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
             <textarea class="form-control" rows="5" id="msj" name="mensaje" placeholder="Mensaje"></textarea>
           </div>                      
-          <button type="button" class="btn btn-default" id="btn-form">
-            <i class="fa fa-paper-plane fa-fw"></i>
-            Enviar
-          </button>
+          <input type="submit" class="btn btn-default" id="btn-form" value="Enviar"/>                  
       </form>
 
      </div> 
@@ -213,9 +189,75 @@
 // jquery.validate
 
  $(function(){
-      
+       var notificacion = $("#notificacion"); 
+  $('#elform').validate(
+          {
+            rules:{
+              mensaje:{
+                required:true,
+                minlength:4,
+                maxlength:100
+              },
+              email:{
+                required:true,
+                email:true
+              }
+            },
+              messages:{
+                mensaje:{
+                  required: "Debe ingresar un mensaje",
+                  minlength: "mínimo 3",
+                  maxlength: "máximo 100 jajaja"
+                },
+                email:{
+                  required: "Debe ingresar un email",
+                  email: "Debe ingresar un email valido"
+                }
+              },
+              submitHandler: function(form){
+
+                              // recupera datos del formulario
+                var email_data = $("#email").val();
+                var mensaje_data = $("#msj").val();
+                //var data = email_data + " su mensaje fue : "+ mensaje_data;
+
+                //notificacion.children().children().html(data);
+                //notificacion.show(1000);
+                //notificacion.fadeOut(3000);
+                  $.post("welcome/contacto",{email:email_data, mensaje: mensaje_data},
+      function(){
+         notificacion.show(1000);
+         notificacion.fadeOut(3000);
+      });
+
+              }
+          });
     });        
     </script>
+<!-- envio de datos con ajax -->
+<script>    
+$(function(){
+   var notificacion = $("#notificacion"); // para q sea mas rapido
+      //notificacion.hide(); 
+      
+  $("#btn-form2").on('click',function(){
+
+    // recupera datos del formulario
+    var email_data = $("#email").val();
+    var mensaje_data = $("#msj").val();
+
+    $.post("welcome/contacto",{email:email_data, mensaje: mensaje_data},
+      function(){
+         notificacion.show(1000);
+         notificacion.fadeOut(3000);
+      });
+  });
+
+
+
+});
+</script> <!-- fin envio datos ajax -->
+
  <!-- page scroll -->
   <script>
 $(document).ready(function() {
@@ -252,57 +294,8 @@ if (typeof console === "undefined") {
         log: function() { }
     };
 }
-</script>
-<script>
-//envio de datos con ajax
+</script> <!-- fin pagescroll -->
 
-$(function(){
-   var notificacion = $("#notificacion"); // para q sea mas rapido
-      //notificacion.hide(); 
-      
-  $("#btn-form").on('click',function(){
-
-  $('#elform').validate(
-          {
-            rules:{
-              mensaje:{
-                required:true,
-                minlength:4,
-                maxlength:100
-              },
-              email:{
-                required:true,
-                email:true
-              }
-            },
-              messages:{
-                mensaje:{
-                  required: "Debe ingresar un mensaje",
-                  minlength: "mínimo 3",
-                  maxlength: "máximo 100 jajaja"
-                },
-                email:{
-                  required: "Debe ingresar un email",
-                  email: "Debe ingresar un email valido"
-                }
-              }
-          });
-    // recupera datos del formulario
-    var email_data = $("#email").val();
-    var mensaje_data = $("#msj").val();
-
-    $.post("welcome/contacto",{email:email_data, mensaje: mensaje_data},
-      function(){
-         notificacion.show(1000);
-         notificacion.fadeOut(3000);
-      });
-    return false;
-  });
-
-
-
-});
-</script>
 <!-- google analytics -->
 <script type="text/javascript">
 
