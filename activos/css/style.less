@@ -35,7 +35,7 @@ body {
   	h1{
 
   	font-family: 'Roboto Slab', sans-serif, serif;
-  	font-size: 6em;
+  	font-size: 3em;
     text-shadow: 3px 3px 2px @gray-darker;
   	}
   	p{
@@ -87,9 +87,46 @@ body {
   .dropdown-menu{
     cursor:pointer;
 }
+ /* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { 
+
+  .jumbotron{
+    h1{
+      font-size: 5em;
+    }
+  }
+
+ }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) {  
+  
+  .jumbotron{
+    h1{
+      font-size: 6em;
+    }
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { 
+
+.jumbotron{
+    h1{
+      font-size: 6em;
+    }
+  }
+
+ }
 
 }
 
   #notificacion{
     display: none;
   }
+
+
+ 

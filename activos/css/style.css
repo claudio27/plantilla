@@ -6170,6 +6170,11 @@ body {
   padding-top: 50px;
   padding-bottom: 20px;
   background-color: #ccebf1;
+  /* Extra small devices (phones, less than 768px) */
+  /* No media query since this is the default in Bootstrap */
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
 }
 body .navbar {
   font-family: 'Inconsolata';
@@ -6187,7 +6192,7 @@ body .jumbotron {
 }
 body .jumbotron h1 {
   font-family: 'Roboto Slab', sans-serif, serif;
-  font-size: 6em;
+  font-size: 3em;
   text-shadow: 3px 3px 2px #222222;
 }
 body .jumbotron p {
@@ -6230,6 +6235,21 @@ body .boton-top {
 }
 body .dropdown-menu {
   cursor: pointer;
+}
+@media (min-width: 768px) {
+  body .jumbotron h1 {
+    font-size: 5em;
+  }
+}
+@media (min-width: 992px) {
+  body .jumbotron h1 {
+    font-size: 6em;
+  }
+}
+@media (min-width: 1200px) {
+  body .jumbotron h1 {
+    font-size: 6em;
+  }
 }
 #notificacion {
   display: none;
